@@ -60,6 +60,7 @@ module.exports = {
         'jsdoc/require-returns-type': 'off',
         'jsdoc/require-throws': 'error',
         'jsdoc/require-file-overview': 'error',
+        'jsdoc/no-types': 'error',
         'jsdoc/tag-lines': [
             'warn',
             'any',

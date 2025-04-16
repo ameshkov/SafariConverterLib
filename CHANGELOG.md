@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added [FilterEngine]
 
 One of the main challenges when developing Safari extension is its async nature.
-For a content blocker it is critically important to be inject scripts and styles
+For a content blocker it is critically important to inject scripts and styles
 as soon as possible; in the ideal scenario it should be injected before page own
 scripts are executed.
 
@@ -69,7 +69,7 @@ auto-detection code. Adding this function will save some time.
 
 Several deprecated arguments were removed from the `convertArray` function:
 
-- Removed `optimize` flag as it does provide any real value to the users.
+- Removed `optimize` flag as it does not provide any real value to the users.
 - Removed `advancedBlockingFormat`. The old engine that was using `json`
   format is removed so now only plain text advanced rules format is required.
 

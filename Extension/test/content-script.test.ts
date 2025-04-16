@@ -21,10 +21,6 @@ afterEach(() => {
     document.body.innerHTML = '';
 });
 
-test('ContentScript is defined', () => {
-    expect(ContentScript).toBeDefined();
-});
-
 test('ContentScript adds CSS to the page', () => {
     // Arrange: create a configuration with some CSS
     const config = {

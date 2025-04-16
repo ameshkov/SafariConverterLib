@@ -12,8 +12,8 @@ import { version as extensionVersion } from '../package.json';
 /**
  * Executes code in the context of the page via new script tag and text content.
  *
- * @param {string} code String of scripts to be executed.
- * @returns {boolean} Returns true if code was executed, otherwise returns false.
+ * @param code String of scripts to be executed.
+ * @returns Returns true if code was executed, otherwise returns false.
  */
 const executeScriptsViaTextContent = (code: string): boolean => {
     const scriptTag = document.createElement('script');
@@ -32,8 +32,8 @@ const executeScriptsViaTextContent = (code: string): boolean => {
  * Executes code in the context of page via new script tag and blob. We use
  * this way as a fallback if we fail to inject via textContent.
  *
- * @param {string} code String of scripts to be executed
- * @returns {boolean} Returns true if code was executed, otherwise returns false.
+ * @param code String of scripts to be executed
+ * @returns Returns true if code was executed, otherwise returns false.
  */
 const executeScriptsViaBlob = (code: string): boolean => {
     const blob = new Blob([code], { type: 'text/javascript' });
@@ -54,9 +54,9 @@ const executeScriptsViaBlob = (code: string): boolean => {
  * Execute scripts in a page context and cleanup itself when execution
  * completes.
  *
- * @param {string[]} scripts Array of scripts to execute.
+ * @param scripts Array of scripts to execute.
  */
-const executeScripts = (scripts: string[] = []) => {
+const executeScripts = (scripts: string[]) => {
     scripts.unshift('( function () { try {');
     // we use this script detect if the script was applied,
     // if the script tag was removed, then it means that code was applied, otherwise no
@@ -73,7 +73,7 @@ const executeScripts = (scripts: string[] = []) => {
 /**
  * Applies JS injections.
  *
- * @param {string[]} scripts Array with JS scripts.
+ * @param scripts Array with JS scripts.
  */
 const applyScripts = (scripts: string[]) => {
     if (!scripts || scripts.length === 0) {
@@ -87,7 +87,7 @@ const applyScripts = (scripts: string[]) => {
  * Protects specified style element from changes to the current document
  * Add a mutation observer, which is adds our rules again if it was removed
  *
- * @param {HTMLElement} protectStyleEl protected style element.
+ * @param protectStyleEl protected style element.
  */
 const protectStyleElementContent = (protectStyleEl: HTMLElement) => {
     const { MutationObserver } = window;
@@ -141,13 +141,13 @@ const protectStyleElementContent = (protectStyleEl: HTMLElement) => {
 /**
  * Makes sure that we're dealing with CSS rules (selector + style)
  *
- * @param {string[]} css Array of CSS selectors (for hiding elemets) or full CSS rules.
- * @returns {string[]} Array of CSS rules.
+ * @param css Array of CSS selectors (for hiding elemets) or full CSS rules.
+ * @returns Array of CSS rules.
  */
 const toCSSRules = (css: string[]): string[] => {
     return css
-        .filter((s) => s.length > 0)
         .map((s) => s.trim())
+        .filter((s) => s.length > 0)
         .map((s) => {
             return s[s.length - 1] !== '}'
                 ? `${s} {display:none!important;}`
@@ -158,7 +158,7 @@ const toCSSRules = (css: string[]): string[] => {
 /**
  * Applies css stylesheet.
  *
- * @param {string[]} css Array of CSS rules to apply.
+ * @param css Array of CSS rules to apply.
  */
 const applyCss = (css: string[]) => {
     if (!css || !css.length) {
@@ -186,7 +186,7 @@ const applyCss = (css: string[]) => {
 /**
  * Applies Extended Css stylesheet.
  *
- * @param {string[]} extendedCss Array with ExtendedCss rules.
+ * @param extendedCss Array with ExtendedCss rules.
  */
 const applyExtendedCss = (extendedCss: string[]) => {
     if (!extendedCss || !extendedCss.length) {
@@ -206,9 +206,9 @@ const applyExtendedCss = (extendedCss: string[]) => {
 /**
  * Converts scriptlet to the code that can be executed.
  *
- * @param {Scriptlet} scriptlet Scriptlet data (name and arguments)
- * @param {boolean} verbose Whether to log verbose output
- * @returns {string} Scriptlet code
+ * @param scriptlet Scriptlet data (name and arguments)
+ * @param verbose Whether to log verbose output
+ * @returns Scriptlet code
  */
 const getScriptletCode = (scriptlet: Scriptlet, verbose: boolean): string => {
     try {
@@ -231,8 +231,8 @@ const getScriptletCode = (scriptlet: Scriptlet, verbose: boolean): string => {
 /**
  * Applies scriptlets.
  *
- * @param {Scriptlet[]} scriptlets Array with scriptlets data.
- * @param {boolean} verbose Whether to log verbose output.
+ * @param scriptlets Array with scriptlets data.
+ * @param verbose Whether to log verbose output.
  */
 const applyScriptlets = (scriptlets: Scriptlet[], verbose: boolean) => {
     if (!scriptlets || !scriptlets.length) {

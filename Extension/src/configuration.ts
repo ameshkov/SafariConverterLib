@@ -34,9 +34,9 @@ interface Configuration {
     scriptlets: Scriptlet[];
 
     /**
-     * The timestamp of the engine that was used to generate the configuration.
-     * This is used to determine if the configuration is outdated and needs to
-     * be updated.
+     * The build timestamp of the engine that was used to generate the
+     * configuration. This can be used for implementing the cache for page
+     * configurations and determining when it's time to update the cache.
      */
     engineTimestamp: number;
 }
