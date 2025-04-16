@@ -6,7 +6,7 @@ import { ExtendedCss } from '@adguard/extended-css';
 import { type Source as ScriptletSource, scriptlets as ScriptletsAPI } from '@adguard/scriptlets';
 
 import { type Configuration, type Scriptlet } from './configuration';
-import { log, initLogger } from './logger';
+import { log, initLogger, LoggingLevel } from './logger';
 import { version as extensionVersion } from '../package.json';
 
 /**
@@ -263,9 +263,9 @@ class ContentScript {
      */
     public run(verbose: boolean = false, prefix: string = '[AdGuard Extension]') {
         if (verbose) {
-            initLogger('log', prefix);
+            initLogger(LoggingLevel.Log, prefix);
         } else {
-            initLogger('discard', '');
+            initLogger(LoggingLevel.Discard, '');
         }
 
         log('Starting content script execution...');

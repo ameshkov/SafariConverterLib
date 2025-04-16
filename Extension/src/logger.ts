@@ -8,7 +8,12 @@
  * Once initialized, depending on the specified logging level,
  * buffered messages will either be flushed to the console or discarded.
  */
-type LoggingLevel = 'log' | 'discard';
+
+// Logging levels for the logger.
+enum LoggingLevel {
+    Log = 'log',
+    Discard = 'discard',
+}
 
 // currentLevel holds the active logging level.
 // It remains null until the logger is explicitly initialized.
@@ -43,12 +48,12 @@ function log(...args: any[]): void {
     if (currentLevel === null) {
         // Buffer the message until the logger is initialized.
         pendingLogs.push([timestamp, ...args]);
-    } else if (currentLevel === 'log') {
+    } else if (currentLevel === LoggingLevel.Log) {
         // Output the timestamp, prefix, and the log message.
         // eslint-disable-next-line no-console
         console.log(timestamp, logPrefix, ...args);
     }
-    // If currentLevel is 'discard', the log entry is ignored.
+    // If currentLevel is LoggingLevel.Discard, the log entry is ignored.
 }
 
 /**
@@ -70,7 +75,7 @@ function log(...args: any[]): void {
 function initLogger(level: LoggingLevel, prefix: string): void {
     logPrefix = prefix;
     currentLevel = level;
-    if (currentLevel === 'log') {
+    if (currentLevel === LoggingLevel.Log) {
         // Flush all buffered log messages to the console using the configured
         // prefix.
         pendingLogs.forEach((entry) => {
@@ -82,4 +87,4 @@ function initLogger(level: LoggingLevel, prefix: string): void {
     pendingLogs = [];
 }
 
-export { log, initLogger };
+export { log, initLogger, LoggingLevel };
