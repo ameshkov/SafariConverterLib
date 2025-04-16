@@ -8,7 +8,6 @@
  * Once initialized, depending on the specified logging level,
  * buffered messages will either be flushed to the console or discarded.
  */
-
 type LoggingLevel = 'log' | 'discard';
 
 // currentLevel holds the active logging level.

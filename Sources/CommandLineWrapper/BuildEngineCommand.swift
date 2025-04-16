@@ -1,10 +1,3 @@
-//
-//  BuildEngineCommand.swift
-//  ContentBlockerConverter
-//
-//  Created by Andrey Meshkov on 12/04/2025.
-//
-
 import ArgumentParser
 import ContentBlockerConverter
 import FilterEngine
@@ -85,18 +78,19 @@ struct BuildEngineCommand: ParsableCommand {
 
 /// EmptyDefaults is a UserDefaults instance that does not save or read anything.
 /// It is required to avoid creating unnecessary files.
-class EmptyDefaults: UserDefaults {
-    override func double(forKey defaultName: String) -> Double {
+/// periphery:ignore - seems to be a bug in periphery
+public class EmptyDefaults: UserDefaults {
+    public override func double(forKey defaultName: String) -> Double {
         0
     }
 
-    override func integer(forKey defaultName: String) -> Int {
+    public override func integer(forKey defaultName: String) -> Int {
         0
     }
 
-    override func set(_ value: Double, forKey defaultName: String) {
+    public override func set(_ value: Double, forKey defaultName: String) {
     }
 
-    override func set(_ value: Int, forKey defaultName: String) {
+    public override func set(_ value: Int, forKey defaultName: String) {
     }
 }

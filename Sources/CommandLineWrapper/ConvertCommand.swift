@@ -1,10 +1,3 @@
-//
-//  ConvertCommand.swift
-//  ContentBlockerConverter
-//
-//  Created by Andrey Meshkov on 12/04/2025.
-//
-
 import ArgumentParser
 import ContentBlockerConverter
 import Foundation
@@ -104,6 +97,7 @@ struct ConvertCommand: ParsableCommand {
     }
 }
 
+// periphery:ignore - seems to be a bug in periphery
 func encodeJson(_ result: ConversionResult) throws -> String {
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted

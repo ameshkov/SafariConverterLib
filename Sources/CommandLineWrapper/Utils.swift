@@ -1,15 +1,9 @@
-//
-//  Utils.swift
-//  ContentBlockerConverter
-//
-//  Created by Andrey Meshkov on 12/04/2025.
-//
-
 import ContentBlockerConverter
 import Foundation
 
 /// Writes a string to standard output.
 /// - Parameter str: The string to write.
+/// periphery:ignore - seems to be a bug in periphery
 func writeToStdOut(str: String) {
     let handle = FileHandle.standardOutput
 
@@ -21,6 +15,7 @@ func writeToStdOut(str: String) {
 /// Reads input from either a file path or stdin
 /// - Parameter inputPath: Optional path to a file containing rules
 /// - Returns: Array of rule strings
+/// periphery:ignore - seems to be a bug in periphery
 func readInput(from inputPath: String? = nil) throws -> [String] {
     var rules: [String] = []
 
